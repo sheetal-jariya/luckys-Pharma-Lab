@@ -5,14 +5,19 @@ import { Product } from "@/models/Product";
 export async function POST(req: Request) {
   try {
     await connectDB();
-    const body = await req.json();
 
+    const text = await req.text();
+    if (!text) {
+      return NextResponse.json(
+        { success: false, message: "Request body is required" },
+        { status: 400 }
+      );
+    }
+
+    const body = JSON.parse(text);
     const product = await Product.create(body);
 
-    return NextResponse.json(
-      { success: true, data: product },
-      { status: 201 }
-    );
+    return NextResponse.json({ success: true, data: product }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json(
       { success: false, message: error.message },
