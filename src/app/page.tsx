@@ -5,7 +5,7 @@ export default function HomePage() {
       {/* HERO */}
       <section className="bg-gradient-to-br from-blue-50 to-white py-28">
         <div className="mx-auto max-w-7xl px-6 text-center">
-          <h1 className="text-5xl font-extrabold text-blue-800 leading-tight animate-fadeIn">
+          <h1 className="text-5xl font-extrabold text-[#67bed9] leading-tight animate-fadeIn">
             Quality Medicines, <br /> Trusted Care
           </h1>
 
@@ -17,14 +17,14 @@ export default function HomePage() {
           <div className="mt-10 flex justify-center gap-6">
             <a
               href="/products"
-              className="rounded-lg bg-blue-700 px-7 py-3 text-white shadow-md hover:bg-blue-800 hover:shadow-xl hover:-translate-y-1 transition"
+              className="rounded-lg bg-[#67bed9] px-7 py-3 text-white shadow-md hover:bg-[#56aac3] hover:shadow-xl hover:-translate-y-1 transition"
             >
               View Products
             </a>
 
             <a
               href="/contact"
-              className="rounded-lg border border-blue-700 px-7 py-3 text-blue-700 hover:bg-blue-50 hover:-translate-y-1 transition"
+              className="rounded-lg border border-[#67bed9] px-7 py-3 text-[#67bed9] hover:bg-blue-50 hover:-translate-y-1 transition"
             >
               Contact Us
             </a>
@@ -60,7 +60,7 @@ export default function HomePage() {
                 key={cat}
                 className="rounded-xl bg-white p-8 text-center shadow hover:shadow-xl hover:-translate-y-2 transition"
               >
-                <p className="text-lg font-semibold text-blue-700">{cat}</p>
+                <p className="text-lg font-semibold text-[#67bed9]">{cat}</p>
                 <p className="mt-2 text-sm text-gray-500">
                   High quality & reliable
                 </p>
@@ -96,7 +96,7 @@ export default function HomePage() {
                 key={item.title}
                 className="rounded-xl border bg-white p-8 shadow hover:shadow-xl hover:-translate-y-2 transition"
               >
-                <h3 className="text-xl font-semibold text-blue-700">
+                <h3 className="text-xl font-semibold text-[#67bed9]">
                   {item.title}
                 </h3>
                 <p className="mt-3 text-gray-600">{item.desc}</p>
