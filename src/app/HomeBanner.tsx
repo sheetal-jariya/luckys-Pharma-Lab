@@ -1,50 +1,78 @@
 "use client";
 
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Autoplay } from "swiper/modules";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
-import "swiper/css";
-import "swiper/css/navigation";
+const banners = [
+  "/images/banner1.jpeg",
+  "/images/banner2.jpeg",
+];
 
 export default function HomeBanner() {
-  return (
-    <section className="relative w-full">
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        navigation
-        autoplay={{
-          delay: 4000,
-          disableOnInteraction: false,
-        }}
-        loop
-        className="w-full h-[260px] md:h-[420px]"
-      >
-        {/* Slide 1 */}
-        <SwiperSlide>
-          <div className="relative w-full h-full">
-            <Image
-              src="/banners/banner1.jpg"
-              alt="Lucky Pharma Banner"
-              fill
-              priority
-              className="object-cover"
-            />
-          </div>
-        </SwiperSlide>
+  const [index, setIndex] = useState(0);
 
-        {/* Slide 2 */}
-        <SwiperSlide>
-          <div className="relative w-full h-full">
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((prev) => (prev + 1) % banners.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goNext = () => {
+    setIndex((prev) => (prev + 1) % banners.length);
+  };
+
+  return (
+    <section className="relative w-full overflow-hidden m-0 p-0 -mt-px">
+
+      {/* SLIDER */}
+      <div
+        className="flex transition-transform duration-[1200ms] ease-in-out"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
+        {banners.map((src, i) => (
+          <div
+            key={i}
+            className="
+              relative w-full flex-shrink-0
+              aspect-[16/9]
+              sm:aspect-[16/8]
+              xl:h-[500px] xl:aspect-auto
+            "
+          >
             <Image
-              src="/banners/banner2.jpg"
+              src={src}
               alt="Lucky Pharma Banner"
               fill
-              className="object-cover"
+              priority={i === 0}
+              quality={100}
+              className="
+                object-contain
+                xl:object-cover
+              "
             />
           </div>
-        </SwiperSlide>
-      </Swiper>
+        ))}
+      </div>
+
+      {/* ARROWS */}
+      <button
+        onClick={goNext}
+        className="hidden md:flex absolute left-6 top-1/2 -translate-y-1/2
+                   z-20 h-10 w-10 items-center justify-center rounded-full
+                   bg-white/80 text-black shadow hover:bg-white"
+      >
+        ‹
+      </button>
+
+      <button
+        onClick={goNext}
+        className="hidden md:flex absolute right-6 top-1/2 -translate-y-1/2
+                   z-20 h-10 w-10 items-center justify-center rounded-full
+                   bg-white/80 text-black shadow hover:bg-white"
+      >
+        ›
+      </button>
     </section>
   );
 }
