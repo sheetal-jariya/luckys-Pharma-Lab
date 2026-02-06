@@ -1,110 +1,83 @@
+import HomeBanner from "./HomeBanner";
 
-export default function HomePage() {
+export default function Home() {
   return (
-    <main>
-      {/* HERO */}
-      <section className="bg-gradient-to-br from-blue-50 to-white py-28">
-        <div className="mx-auto max-w-7xl px-6 text-center">
-          <h1 className="text-5xl font-extrabold text-blue-800 leading-tight animate-fadeIn">
-            Quality Medicines, <br /> Trusted Care
-          </h1>
+    <>
+      {/* ===== BANNER ===== */}
+      <HomeBanner />
 
-          <p className="mt-6 text-gray-600 max-w-2xl mx-auto text-lg">
-            Lucky’s Pharma delivers high-quality pharmaceutical products with
-            safety, trust, and innovation.
-          </p>
+      {/* ===== WELCOME SECTION ===== */}
+      <section className="bg-white py-16">
+  <div className="max-w-6xl mx-auto px-4 text-center">
 
-          <div className="mt-10 flex justify-center gap-6">
-            <a
-              href="/products"
-              className="rounded-lg bg-blue-700 px-7 py-3 text-white shadow-md hover:bg-blue-800 hover:shadow-xl hover:-translate-y-1 transition"
-            >
-              View Products
-            </a>
+    {/* MAIN HEADING */}
+    <h2
+      className="
+        uppercase
+        font-bold
+        text-[46px]
+        leading-[50px]
+        tracking-[0px]
+        text-[#161222]
+        font-[Roboto]
+      "
+    >
+      WELCOME TO{" "}
+      <span className="text-[#63a8b4]">
+        LUCKYS PHARMA LAB PVT. LTD.
+      </span>
+    </h2>
 
-            <a
-              href="/contact"
-              className="rounded-lg border border-blue-700 px-7 py-3 text-blue-700 hover:bg-blue-50 hover:-translate-y-1 transition"
-            >
-              Contact Us
-            </a>
-          </div>
-        </div>
-      </section>
+    {/* SUB HEADING */}
+    <p
+      className="
+        uppercase
+        mt-2
+        font-normal
+        text-[40px]
+        leading-[46px]
+        tracking-[0px]
+        text-[#161222]
+      "
+    >
+      (PHARMA COMPANY IN INDORE)
+    </p>
 
-      {/* ABOUT */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">
-            About Lucky’s Pharma
-          </h2>
+    {/* DESCRIPTION */}
+    <p className="mt-6 max-w-4xl mx-auto text-[15px] leading-[26px] text-gray-600">
+      <span className="text-[#63a8b4] font-medium">
+        Luckys Pharma
+      </span>{" "}
+      has been catering to the requirements of the healthcare sector,
+      since its formation in the year 2001. The firm has established
+      itself as a reliable partner of several doctors and medical
+      practitioners by serving quality pharmaceuticals.
+    </p>
 
-          <p className="text-gray-600 max-w-3xl leading-relaxed">
-            We manufacture and supply high-quality medicines across multiple
-            therapeutic segments, ensuring affordability and compliance with
-            global standards.
-          </p>
-        </div>
-      </section>
+    {/* BUTTON */}
+    <div className="mt-8">
+      <a
+        href="/about"
+        className="
+          inline-block
+          bg-[#63a8b4]
+          text-white
+          px-8 py-3
+          rounded-md
+          text-[15px]
+          font-medium
+          hover:bg-[#549aa6]
+          transition
+        "
+      >
+        Read More !
+      </a>
+    </div>
 
-      {/* PRODUCT CATEGORIES */}
-      <section className="bg-gray-50 py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-bold text-gray-800 mb-10">
-            Product Categories
-          </h2>
+  </div>
+</section>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {["Tablets", "Capsules", "Syrups", "Injections"].map((cat) => (
-              <div
-                key={cat}
-                className="rounded-xl bg-white p-8 text-center shadow hover:shadow-xl hover:-translate-y-2 transition"
-              >
-                <p className="text-lg font-semibold text-blue-700">{cat}</p>
-                <p className="mt-2 text-sm text-gray-500">
-                  High quality & reliable
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* WHY CHOOSE US */}
-      <section className="py-20">
-        <div className="mx-auto max-w-7xl px-6">
-          <h2 className="text-3xl font-bold text-gray-800 mb-10">
-            Why Choose Us
-          </h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Quality Assurance",
-                desc: "Strict GMP-certified quality checks",
-              },
-              {
-                title: "Wide Product Range",
-                desc: "Multiple therapeutic segments covered",
-              },
-              {
-                title: "Trusted Partner",
-                desc: "Reliable pharma partner nationwide",
-              },
-            ].map((item) => (
-              <div
-                key={item.title}
-                className="rounded-xl border bg-white p-8 shadow hover:shadow-xl hover:-translate-y-2 transition"
-              >
-                <h3 className="text-xl font-semibold text-blue-700">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-gray-600">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-    </main>
+    </>
   );
 }
+

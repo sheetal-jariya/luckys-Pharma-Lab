@@ -1,102 +1,146 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import Image from "next/image";
 import { useState } from "react";
 
-const menu = [
-  { name: "Home", href: "/" },
-  { name: "Products", href: "/products" },
-  { name: "About Us", href: "/about" },
-];
+// React Icons
+import {
+  FaPhoneAlt,
+  FaEnvelope,
+  FaFacebookF,
+  FaTwitter,
+  FaYoutube,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaSearch,
+} from "react-icons/fa";
 
 export default function Navbar() {
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/80 backdrop-blur border-b shadow-sm">
-      <nav className="mx-auto max-w-7xl px-6 py-4 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl font-bold text-blue-700 tracking-wide hover:scale-105 transition"
-        >
-          Lucky’s Pharma
-        </Link>
+    <header className="sticky top-0 z-50 w-full bg-white">
 
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
-          {menu.map((item) => (
-            <li key={item.name}>
-              <Link
-                href={item.href}
-                className={`relative transition ${
-                  pathname === item.href
-                    ? "text-blue-700 after:w-full"
-                    : "hover:text-blue-700"
-                }
-                after:absolute after:left-0 after:-bottom-1 after:h-[2px]
-                after:bg-blue-700 after:transition-all after:w-0
-                hover:after:w-full`}
-              >
-                {item.name}
-              </Link>
-            </li>
-          ))}
+      {/* ================= TOP INFO BAR ================= */}
+      <div className="bg-[#63a8b4] text-white text-[12px] sm:text-sm">
+        <div className="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
 
-          <li>
-            <Link
-              href="/contact"
-              className="rounded-md bg-blue-700 px-5 py-2 text-white shadow
-                         hover:bg-blue-800 hover:shadow-lg transition"
+          {/* Left */}
+          <marquee className="w-full md:w-1/2">
+            Do not post Job, raw material & personal enquiries.
+          </marquee>
+
+          {/* Right */}
+          <div className="flex flex-wrap items-center gap-5">
+
+            <a href="tel:08889909734" className="flex items-center gap-2 hover:opacity-90">
+              <FaPhoneAlt className="text-[13px]" />
+              <span>08889909734</span>
+            </a>
+
+            <a href="tel:09425063976" className="flex items-center gap-2 hover:opacity-90">
+              <FaPhoneAlt className="text-[13px]" />
+              <span>09425063976</span>
+            </a>
+
+            <a
+              href="mailto:info@luckyspharmalab.com"
+              className="flex items-center gap-2 hover:opacity-90"
             >
-              Contact
-            </Link>
-          </li>
-        </ul>
+              <FaEnvelope className="text-[14px]" />
+              <span>info@luckyspharmalab.com</span>
+            </a>
 
-        {/* Mobile Button */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-gray-700"
-          aria-label="Toggle Menu"
-        >
-          ☰
-        </button>
-      </nav>
+            {/* Social Icons */}
+            <div className="flex items-center gap-3 text-[14px]">
+              <a href="#" className="hover:opacity-80"><FaFacebookF /></a>
+              <a href="#" className="hover:opacity-80"><FaTwitter /></a>
+              <a href="#" className="hover:opacity-80"><FaYoutube /></a>
+              <a href="#" className="hover:opacity-80"><FaLinkedinIn /></a>
+              <a href="#" className="hover:opacity-80"><FaPinterestP /></a>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      {/* Mobile Menu */}
-      {open && (
-        <div className="md:hidden bg-white border-t shadow-sm">
-          <ul className="flex flex-col px-6 py-4 gap-4">
-            {menu.map((item) => (
-              <li key={item.name}>
+      {/* ================= MAIN NAVBAR ================= */}
+      <div className="bg-white">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+
+          {/* LOGO */}
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/images/luckpharm.png"
+              alt="Lucky Pharma"
+              width={120}
+              height={55}
+              priority
+            />
+          </Link>
+
+          {/* MENU (DESKTOP) */}
+          <ul className="hidden md:flex items-center gap-8 text-gray-700 font-medium">
+            {[
+              "Home",
+              "About Us",
+              "Product Range",
+              "Divisions",
+              "Facility",
+              "Contact Us",
+            ].map((item) => (
+              <li key={item}>
                 <Link
-                  href={item.href}
-                  onClick={() => setOpen(false)}
-                  className={`block font-medium ${
-                    pathname === item.href
-                      ? "text-blue-700"
-                      : "text-gray-700"
-                  }`}
+                  href="#"
+                  className="hover:text-[#63a8b4] transition-colors"
                 >
-                  {item.name}
+                  {item}
                 </Link>
               </li>
             ))}
-
-            <Link
-              href="/contact"
-              onClick={() => setOpen(false)}
-              className="mt-2 inline-block rounded-md bg-blue-700 px-4 py-2
-                         text-white text-center"
-            >
-              Contact
-            </Link>
           </ul>
+
+          {/* SEARCH ICON */}
+          <div className="hidden md:flex text-gray-600 text-lg cursor-pointer hover:text-[#63a8b4]">
+            <FaSearch />
+          </div>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            className="md:hidden text-2xl"
+            onClick={() => setOpen(!open)}
+          >
+            ☰
+          </button>
         </div>
-      )}
+
+        {/* ================= MOBILE MENU ================= */}
+        {open && (
+          <div className="md:hidden bg-white border-t">
+            <ul className="flex flex-col px-6 py-4 gap-4 font-medium">
+              {[
+                "Home",
+                "About Us",
+                "Product Range",
+                "Divisions",
+                "Facility",
+                "Contact Us",
+              ].map((item) => (
+                <li key={item}>
+                  <Link
+                    href="#"
+                    onClick={() => setOpen(false)}
+                    className="block py-2 border-b"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+      </div>
     </header>
   );
 }
+
